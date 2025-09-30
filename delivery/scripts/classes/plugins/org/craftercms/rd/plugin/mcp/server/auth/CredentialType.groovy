@@ -22,9 +22,9 @@
 * SOFTWARE.
 */
 
-package org.craftercms.ai.mcp.server.auth
+package org.craftercms.rd.plugin.mcp.server.auth
 
-import org.craftercms.ai.mcp.server.tools.*
+import org.craftercms.rd.plugin.mcp.server.tools.*
 
 class CredentialType {
     public static String NONE = "none";

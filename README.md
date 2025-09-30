@@ -20,7 +20,6 @@ crafter.engine.groovy.grapes.download.enabled=true
 2. Install this plugin into the project.
 3. Add configuration for authentication `site-config.xml` for the project:
 
-
 ```
      <cors>
         <enable>true</enable>
@@ -64,8 +63,10 @@ crafter.engine.groovy.grapes.download.enabled=true
 4. Add the MCP server to your `application-context.xml` for the project:
 
 ```
+    <bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer" parent="crafter.properties"/>
+
     <!-- MCP Server -->
-    <bean name="crafterMcpServer" class="org.craftercms.ai.mcp.server.CrafterMcpServer">
+    <bean name="crafterMcpServer" class="org.craftercms.rd.plugin.mcp.server.CrafterMcpServer">
         <property name="previewMode" value="${crafter.security.preview.enabled:false}"/>
 
         <property name="allowPublicAccess" value="${crafterMcp.allowPublicAccess}"/> 
@@ -87,14 +88,15 @@ crafter.engine.groovy.grapes.download.enabled=true
 
 
         <property name="authValidator">
-            <bean name="jwtAuthenticator" class="org.craftercms.ai.mcp.server.auth.validator.SimpleAuthValidator">
+            <bean name="jwtAuthenticator" class="org.craftercms.rd.plugin.mcp.server.auth.validator.SimpleAuthValidator">
             </bean>   
         </property>
     </bean>
 
-    <bean name="toolSpringBeanScanner" class="org.craftercms.ai.mcp.server.tools.ToolSpringBeanScanner" init-method="scan">
+    <bean name="toolSpringBeanScanner" class="org.craftercms.rd.plugin.mcp.server.tools.tools.ToolSpringBeanScanner" init-method="scan">
         <property name="mcpServer" ref="crafterMcpServer" />
     </bean>
+
 ```
 
 
