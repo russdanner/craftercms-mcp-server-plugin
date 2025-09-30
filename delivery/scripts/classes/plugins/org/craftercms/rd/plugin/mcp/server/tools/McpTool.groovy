@@ -22,9 +22,9 @@
 * SOFTWARE.
 */
 
-package org.craftercms.rd.plugin.mcp.server.tools
+package plugins.org.craftercms.rd.plugin.mcp.server.tools
 
-import org.craftercms.rd.plugin.mcp.server.auth.CredentialType
+import plugins.org.craftercms.rd.plugin.mcp.server.auth.CredentialType
 
 abstract class McpTool {
     String toolName

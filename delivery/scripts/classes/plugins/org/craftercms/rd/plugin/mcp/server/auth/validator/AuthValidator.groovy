@@ -22,11 +22,11 @@
 * SOFTWARE.
 */
 
-package org.craftercms.rd.plugin.mcp.server.auth.validator
+package plugins.org.craftercms.rd.plugin.mcp.server.auth.validator
 
 import jakarta.servlet.http.HttpServletResponse;
 
-import org.craftercms.rd.plugin.mcp.server.tools.*
+import plugins.org.craftercms.rd.plugin.mcp.server.tools.*
 
 
 interface AuthValidator {

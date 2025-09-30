@@ -22,7 +22,7 @@
 * SOFTWARE.
 */
 
-package org.craftercms.rd.plugin.mcp.server.prompts
+package plugins.org.craftercms.rd.plugin.mcp.server.prompts
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory

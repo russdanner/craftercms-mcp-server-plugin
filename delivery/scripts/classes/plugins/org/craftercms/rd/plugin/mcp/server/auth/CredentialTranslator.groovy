@@ -22,9 +22,9 @@
 * SOFTWARE.
 */
 
-package org.craftercms.rd.plugin.mcp.server.auth
+package plugins.org.craftercms.rd.plugin.mcp.server.auth
 
-import org.craftercms.rd.plugin.mcp.server.tools.*
+import plugins.org.craftercms.rd.plugin.mcp.server.tools.*
 
 class CredentialTranslator {
     String translateCredentials(String userId, String[] scopes, McpTool tool) {

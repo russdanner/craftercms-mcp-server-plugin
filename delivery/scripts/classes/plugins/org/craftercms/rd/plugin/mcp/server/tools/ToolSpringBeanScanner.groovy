@@ -22,7 +22,7 @@
 * SOFTWARE.
 */
 
-package org.craftercms.rd.plugin.mcp.server.tools
+package plugins.org.craftercms.rd.plugin.mcp.server.tools
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -37,7 +37,7 @@ import org.springframework.beans.BeansException
 
 import java.lang.reflect.Method
 
-import org.craftercms.ai.mcp.server.CrafterMcpServer;
+import plugins.org.craftercms.ai.mcp.server.CrafterMcpServer;
 
 class ToolSpringBeanScanner implements ApplicationContextAware {
 

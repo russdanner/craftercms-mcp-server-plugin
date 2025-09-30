@@ -22,7 +22,7 @@
 * SOFTWARE.
 */
 
-package org.craftercms.rd.plugin.mcp.server.tools
+package plugins.org.craftercms.rd.plugin.mcp.server.tools
 
 import java.lang.annotation.*
 

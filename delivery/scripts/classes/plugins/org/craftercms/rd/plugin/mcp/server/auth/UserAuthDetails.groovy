@@ -22,7 +22,7 @@
 * SOFTWARE.
 */
 
-package org.craftercms.rd.plugin.mcp.server.auth
+package plugins.org.craftercms.rd.plugin.mcp.server.auth
 
 class UserAuthDetails {
     public String userId
