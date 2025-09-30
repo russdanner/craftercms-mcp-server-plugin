@@ -22,8 +22,7 @@
 * SOFTWARE.
 */
 
-package org.craftercms.ai.mcp.server.tools
-
+package org.craftercms.rd.plugin.mcp.server.tools
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory

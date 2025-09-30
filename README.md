@@ -18,43 +18,7 @@ crafter.engine.groovy.grapes.download.enabled=true
 
 1. Ensure that the presequsits are met (see above.)
 2. Install this plugin into the project.
-3. Add the MCP server to your `application-context.xml` for the project:
-
-```
-    <!-- MCP Server -->
-    <bean name="crafterMcpServer" class="org.craftercms.ai.mcp.server.CrafterMcpServer">
-        <property name="previewMode" value="${crafter.security.preview.enabled:false}"/>
-
-        <property name="allowPublicAccess" value="${crafterMcp.allowPublicAccess}"/> 
-        <property name="oauthMcpServerUrlBase" value="${crafterMcp.auth.oauth.mcpServer.serverUrlBase}" />
-        <!-- property name="oauthMcpServerAuthUrlBase" value="${crafterMcp.auth.oauth.mcpServer.serverUrlBase}" /-->
-        <property name="oauthMcpServerAuthorizationEndpoint" value="${crafterMcp.auth.oauth.mcpServer.authorizationEndpoint}" />
-        <property name="oauthMcpServerTokenEndpoint" value="${crafterMcp.auth.oauth.mcpServer.tokenEndpoint}" />
-        <property name="oauthMcpServerResourceUrl" value="${crafterMcp.auth.oauth.mcpServer.resourceUrl}" />
-
-        <property name="oauthAuthServerUrlBase" value="${crafterMcp.auth.oauth.authServer.serverUrlBase}" />
-        <property name="oauthAuthServerAuthorizationEndpoint" value="${crafterMcp.auth.oauth.authServer.authorizationEndpoint}" />
-        <property name="oauthAuthServerTokenEndpoint" value="${crafterMcp.auth.oauth.authServer.tokenEndpoint}" />
-        <property name="oauthAuthServerUserinfoEndpoint" value="${crafterMcp.auth.oauth.authServer.userinfoEndpoint}" />
-        <property name="oauthAuthServerJwksUri" value="${crafterMcp.auth.oauth.authServer.jwksUri}" />
-        <property name="oauthAuthServerClientId" value="${crafterMcp.auth.oauth.authServer.clientId}" />
-        <property name="oauthAuthServerSecret" value="${crafterMcp.auth.oauth.authServer.secret}" />
-
-        <property name="oauthClientRedirectUrlBase" value="${crafterMcp.auth.oauth.client.redirectUrlBase}" />
-
-
-        <property name="authValidator">
-            <bean name="jwtAuthenticator" class="org.craftercms.ai.mcp.server.auth.validator.SimpleAuthValidator">
-            </bean>   
-        </property>
-    </bean>
-
-    <bean name="toolSpringBeanScanner" class="org.craftercms.ai.mcp.server.tools.ToolSpringBeanScanner" init-method="scan">
-        <property name="mcpServer" ref="crafterMcpServer" />
-    </bean>
-```
-
-4. Add configuration for authentication `site-config.xml` for the project:
+3. Add configuration for authentication `site-config.xml` for the project:
 
 
 ```
@@ -96,6 +60,43 @@ crafter.engine.groovy.grapes.download.enabled=true
         </auth>
     </crafterMcp>
 ```
+
+4. Add the MCP server to your `application-context.xml` for the project:
+
+```
+    <!-- MCP Server -->
+    <bean name="crafterMcpServer" class="org.craftercms.ai.mcp.server.CrafterMcpServer">
+        <property name="previewMode" value="${crafter.security.preview.enabled:false}"/>
+
+        <property name="allowPublicAccess" value="${crafterMcp.allowPublicAccess}"/> 
+        <property name="oauthMcpServerUrlBase" value="${crafterMcp.auth.oauth.mcpServer.serverUrlBase}" />
+        <!-- property name="oauthMcpServerAuthUrlBase" value="${crafterMcp.auth.oauth.mcpServer.serverUrlBase}" /-->
+        <property name="oauthMcpServerAuthorizationEndpoint" value="${crafterMcp.auth.oauth.mcpServer.authorizationEndpoint}" />
+        <property name="oauthMcpServerTokenEndpoint" value="${crafterMcp.auth.oauth.mcpServer.tokenEndpoint}" />
+        <property name="oauthMcpServerResourceUrl" value="${crafterMcp.auth.oauth.mcpServer.resourceUrl}" />
+
+        <property name="oauthAuthServerUrlBase" value="${crafterMcp.auth.oauth.authServer.serverUrlBase}" />
+        <property name="oauthAuthServerAuthorizationEndpoint" value="${crafterMcp.auth.oauth.authServer.authorizationEndpoint}" />
+        <property name="oauthAuthServerTokenEndpoint" value="${crafterMcp.auth.oauth.authServer.tokenEndpoint}" />
+        <property name="oauthAuthServerUserinfoEndpoint" value="${crafterMcp.auth.oauth.authServer.userinfoEndpoint}" />
+        <property name="oauthAuthServerJwksUri" value="${crafterMcp.auth.oauth.authServer.jwksUri}" />
+        <property name="oauthAuthServerClientId" value="${crafterMcp.auth.oauth.authServer.clientId}" />
+        <property name="oauthAuthServerSecret" value="${crafterMcp.auth.oauth.authServer.secret}" />
+
+        <property name="oauthClientRedirectUrlBase" value="${crafterMcp.auth.oauth.client.redirectUrlBase}" />
+
+
+        <property name="authValidator">
+            <bean name="jwtAuthenticator" class="org.craftercms.ai.mcp.server.auth.validator.SimpleAuthValidator">
+            </bean>   
+        </property>
+    </bean>
+
+    <bean name="toolSpringBeanScanner" class="org.craftercms.ai.mcp.server.tools.ToolSpringBeanScanner" init-method="scan">
+        <property name="mcpServer" ref="crafterMcpServer" />
+    </bean>
+```
+
 
 
 

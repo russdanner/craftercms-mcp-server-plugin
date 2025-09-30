@@ -22,11 +22,13 @@
 * SOFTWARE.
 */
 
-package org.craftercms.ai.mcp.server.auth.validator
+package org.craftercms.rd.plugin.mcp.server.auth.validator
+
 
 import jakarta.servlet.http.HttpServletResponse;
 
-import org.craftercms.ai.mcp.server.tools.*
+import org.craftercms.rd.plugin.mcp.server.tools.*
+
 
 class JWTAuthValidator implements AuthValidator {
 

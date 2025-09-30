@@ -22,13 +22,14 @@
 * SOFTWARE.
 */
 
-package org.craftercms.ai.mcp.server.auth.validator
+package org.craftercms.rd.plugin.mcp.server.auth.validator
 
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.util.HashSet;
 
-import org.craftercms.ai.mcp.server.tools.*
+import org.craftercms.rd.plugin.mcp.server.tools
+
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

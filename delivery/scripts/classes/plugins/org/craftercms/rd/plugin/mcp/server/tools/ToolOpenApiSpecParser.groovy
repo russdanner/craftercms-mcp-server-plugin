@@ -22,7 +22,8 @@
 * SOFTWARE.
 */
 
-package org.craftercms.ai.mcp.server.tools
+package org.craftercms.rd.plugin.mcp.server.tools
+
 
 @Grab('io.swagger.parser.v3:swagger-parser:2.1.30')
 
