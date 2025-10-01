@@ -65,8 +65,8 @@ crafter.engine.groovy.grapes.download.enabled=true
 ```
     <bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer" parent="crafter.properties"/>
 
-    <!-- MCP Server -->
-    <bean name="crafterMcpServer" class="org.craftercms.rd.plugin.mcp.server.CrafterMcpServer">
+        <!-- MCP Server -->
+    <bean name="crafterMcpServer" class="plugins.org.craftercms.rd.plugin.mcp.server.CrafterMcpServer">
         <property name="previewMode" value="${crafter.security.preview.enabled:false}"/>
 
         <property name="allowPublicAccess" value="${crafterMcp.allowPublicAccess}"/> 
@@ -88,12 +88,12 @@ crafter.engine.groovy.grapes.download.enabled=true
 
 
         <property name="authValidator">
-            <bean name="jwtAuthenticator" class="org.craftercms.rd.plugin.mcp.server.auth.validator.SimpleAuthValidator">
+            <bean name="jwtAuthenticator" class="plugins.org.craftercms.rd.plugin.mcp.server.auth.validator.SimpleAuthValidator">
             </bean>   
         </property>
     </bean>
 
-    <bean name="toolSpringBeanScanner" class="org.craftercms.rd.plugin.mcp.server.tools.tools.ToolSpringBeanScanner" init-method="scan">
+    <bean name="toolSpringBeanScanner" class="plugins.org.craftercms.rd.plugin.mcp.server.tools.tools.ToolSpringBeanScanner" init-method="scan">
         <property name="mcpServer" ref="crafterMcpServer" />
     </bean>
 

@@ -22,7 +22,7 @@
 * SOFTWARE.
 */
 
-package org.craftercms.rd.plugin.mcp.server
+package plugins.org.craftercms.rd.plugin.mcp.server
 
 @Grab(group='com.google.code.gson', module='gson', version='2.13.2')
 @Grab(group='io.jsonwebtoken', module='jjwt-api', version='0.13.0')
@@ -73,11 +73,11 @@ import io.jsonwebtoken.security.Jwks;
 
 import java.util.Base64;
 
-import org.craftercms.rd.plugin.mcp.server.tools.*
-import org.craftercms.rd.plugin.mcp.server.resources.*
-import org.craftercms.rd.plugin.mcp.server.prompts.*
-import org.craftercms.rd.plugin.mcp.server.auth.*
-import org.craftercms.rd.plugin.mcp.server.auth.validator.*
+import plugins.org.craftercms.rd.plugin.mcp.server.tools.*
+import plugins.org.craftercms.rd.plugin.mcp.server.resources.*
+import plugins.org.craftercms.rd.plugin.mcp.server.prompts.*
+import plugins.org.craftercms.rd.plugin.mcp.server.auth.*
+import plugins.org.craftercms.rd.plugin.mcp.server.auth.validator.*
 
 import org.craftercms.engine.service.context.SiteContext
 
