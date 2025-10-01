@@ -51,7 +51,7 @@ class SimpleAuthValidator implements AuthValidator {
     public String[] validate(String authHeader, HttpServletResponse resp) throws IOException {
 
 
-        System.out.println("AUTH VALIDATOR (hard coded to profile:email): "+authHeader)
+//        System.out.println("AUTH VALIDATOR (hard coded to profile:email): "+authHeader)
 
         if (authHeader == null || "".equals(authHeader)) {
             logger.warn("No valid Authorization header received");
