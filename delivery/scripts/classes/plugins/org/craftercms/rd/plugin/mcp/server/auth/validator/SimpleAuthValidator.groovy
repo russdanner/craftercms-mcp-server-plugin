@@ -28,7 +28,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.util.HashSet;
 
-import plugins.org.craftercms.rd.plugin.mcp.server.tools
+import plugins.org.craftercms.rd.plugin.mcp.server.tools.*
 
 
 import org.slf4j.Logger;
