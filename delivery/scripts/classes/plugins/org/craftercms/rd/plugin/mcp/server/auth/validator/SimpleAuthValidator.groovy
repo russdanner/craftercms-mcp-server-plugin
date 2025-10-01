@@ -66,7 +66,7 @@ class SimpleAuthValidator implements AuthValidator {
             //     return null;
             // }
             // else {
-               return ["profile","email"]
+               return ["custom:Wallet", "profile","email"]
 //            } 
         }
     }

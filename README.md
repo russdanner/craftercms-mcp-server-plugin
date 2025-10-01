@@ -98,6 +98,46 @@ crafter.engine.groovy.grapes.download.enabled=true
     </bean>
 
 ```
+5. Configure URL rewrites for OAuth
+Add the following to `urlrewrite.xml`
+```
+<urlrewrite>
+
+
+    <rule>
+        <from>^/.well-known/oauth-protected-resource(.*)$</from>
+        <to type="forward" qsappend="true">/api/plugins/org/craftercms/rd/plugin/mcp/server/craftermcp/protected-resource.json</to>
+    </rule>
+    <rule>
+        <from>^/.well-known/oauth-protected-resource/api/craftermcp/stream(.*)$</from>
+        <to type="forward" qsappend="true">/api/plugins/org/craftercms/rd/plugin/mcp/server/craftermcp/protected-resource.json</to>
+    </rule>
+    <rule>
+        <from>^/authorize(.*)$</from>
+        <to type="forward" qsappend="true">/api/plugins/org/craftercms/rd/plugin/mcp/server/craftermcp/authorize</to>
+    </rule>
+    <rule>
+        <from>^/.well-known/openid-configuration(.*)$</from>
+        <to type="forward" qsappend="true">/api/plugins/org/craftercms/rd/plugin/mcp/server/craftermcp/oauth-config.json</to>
+   </rule>
+    <rule>
+        <from>^/.well-known/openid-configuration/api/craftermcp/stream(.*)$</from>
+        <to type="forward" qsappend="true">/api/plugins/org/craftercms/rd/plugin/mcp/server/craftermcp/oauth-config.json</to>
+   </rule>
+
+    <rule>
+        <from>^/api/craftermcp/stream/.well-known/openid-configuration(.*)$</from>
+        <to type="forward" qsappend="true">/api/plugins/org/craftercms/rd/plugin/mcp/server/craftermcp/oauth-config.json</to>
+   </rule>
+    <rule>
+        <from>^/token(.*)$</from>
+        <to type="forward" qsappend="true">/api/plugins/org/craftercms/rd/plugin/mcp/server/craftermcp/token</to>
+   </rule>
+
+
+</urlrewrite>  
+```
+
 ### Example Apache HTTPD Configuration:
 ```
   GNU nano 6.2                                             /etc/apache2/sites-enabled/000-default.conf                                                      
@@ -216,20 +256,62 @@ crafter.engine.groovy.grapes.download.enabled=true
 
 ### Using Annotations
 ```
-package foo
+package org.acme
 
-import org.craftercms.ai.mcp.server.tools.DeclareTool
-import org.craftercms.ai.mcp.server.tools.DeclareToolParam
+import plugins.org.craftercms.rd.plugin.mcp.server.tools.DeclareTool
+import plugins.org.craftercms.rd.plugin.mcp.server.tools.DeclareToolParam
  
-public class BookingService {
- 
-    @DeclareTool(toolName="bookFlight", returnType="string", toolDescription="Book a specific seat on a given flight", scopes="wallet, profile, email" )
+public class AcmeAirlineServices {
+
+    @DeclareTool(toolName="bookFlight", returnType="string", toolDescription="Book a specific seat on a given flight", scopes="custom:Wallet, profile, email" )
     @DeclareToolParam (name="flight", type="string", description="The flight the user wants")
     @DeclareToolParam (name="seat", type="string", description="The seat the user wants")
     public String bookFlight(String flight, String seat) {
         return "Booked"
-    }
+    } 
+}     
+```
+
+Note: Don't forget to add declare the bean in your applicaiton-context.xml
+
+```
+    <bean name="acmeAirlineServices" class="org.acme.AcmeAirlineServices" />
+```
+
+Alternative appoach (declare bean via Spring annoations)
+Currently blocked by: https://github.com/craftercms/craftercms/issues/8375
+```
+package org.acme
+
+import org.springframework.stereotype.Component
+import org.springframework.context.annotation.Lazy
+
+import plugins.org.craftercms.rd.plugin.mcp.server.tools.DeclareTool
+import plugins.org.craftercms.rd.plugin.mcp.server.tools.DeclareToolParam
+
+@Component("acmeAirlineServices")
+@Lazy(false) 
+public class AcmeAirlineServices {
+
+    @DeclareTool(toolName="bookFlight", returnType="string", toolDescription="Book a specific seat on a given flight", scopes="custom:Wallet, profile, email" )
+    @DeclareToolParam (name="flight", type="string", description="The flight the user wants")
+    @DeclareToolParam (name="seat", type="string", description="The seat the user wants")
+    public String bookFlight(String flight, String seat) {
+        return "Booked"
+    } 
 }   
+```
+
+Note: Don't forget to add the Spring context scanning to your Application Context
+```
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans   http://www.springframework.org/schema/beans/spring-beans.xsd 
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="org.acme"/>
+
 ```
 
 ## Adding Resources
@@ -238,3 +320,6 @@ public class BookingService {
 
 
 
+# Connecting with the inspector
+
+http://localhost/api/plugins/org/craftercms/rd/plugin/mcp/server/craftermcp/stream?crafterSite=mcptest

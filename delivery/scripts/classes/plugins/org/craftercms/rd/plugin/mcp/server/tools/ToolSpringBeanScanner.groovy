@@ -64,7 +64,7 @@ class ToolSpringBeanScanner implements ApplicationContextAware {
         String[] beanNames = applicationContext.getBeanDefinitionNames()
 
         for (String beanName : beanNames) {
-            Object bean = applicationContext.getBean(beanName)
+           Object bean = applicationContext.getBean(beanName)
             Class<?> beanClass = bean.getClass()
 
             for (Method method : beanClass.getDeclaredMethods()) {
