@@ -139,8 +139,7 @@ Add the following to `urlrewrite.xml`
 ```
 
 ### Example Apache HTTPD Configuration:
-```
-  GNU nano 6.2                                             /etc/apache2/sites-enabled/000-default.conf                                                      
+```                                                  
 <VirtualHost *:80>
 
 
@@ -315,11 +314,14 @@ Note: Don't forget to add the Spring context scanning to your Application Contex
 ```
 
 ## Adding Resources
+More to come on this
 
 ## Adding Prompts
+More to come on this
 
+# Connecting with the MCP Inspector
+1. Start the inspector by executing `npx @modelcontextprotocol/inspector`
+2. Configure `Transport Type` with the auth URL `Streamable HTTP`
+3. Configure `URL` with the auth URL `http://localhost/api/plugins/org/craftercms/rd/plugin/mcp/server/craftermcp/stream`
+4. If you are requiring authentication, configure you OID/OAuth client ID
 
-
-# Connecting with the inspector
-
-http://localhost/api/plugins/org/craftercms/rd/plugin/mcp/server/craftermcp/stream?crafterSite=mcptest
