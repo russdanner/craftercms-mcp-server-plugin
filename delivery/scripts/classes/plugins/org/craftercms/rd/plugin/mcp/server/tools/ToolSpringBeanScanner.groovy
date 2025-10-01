@@ -37,7 +37,7 @@ import org.springframework.beans.BeansException
 
 import java.lang.reflect.Method
 
-import plugins.org.craftercms.ai.mcp.server.CrafterMcpServer;
+import plugins.org.craftercms.rd.plugin.mcp.server.CrafterMcpServer;
 
 class ToolSpringBeanScanner implements ApplicationContextAware {
 
