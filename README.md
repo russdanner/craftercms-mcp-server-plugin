@@ -98,7 +98,37 @@ crafter.engine.groovy.grapes.download.enabled=true
     </bean>
 
 ```
+### Example Apache HTTPD Configuration:
+```
+  GNU nano 6.2                                             /etc/apache2/sites-enabled/000-default.conf                                                      
+<VirtualHost *:80>
 
+
+    ServerName localhost
+
+#    RewriteRule (.*) $1/?crafterSite=mcptest [QSA,PT]
+     Header unset Access-Control-Allow-Origin
+     Header unset Access-Control-Allow-Methods
+     Header unset Access-Control-Allow-Headers
+
+    Header always set Access-Control-Allow-Origin "*"
+    Header always set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS, PATCH"
+    Header always set Access-Control-Allow-Headers "Content-Type, Authorization, X-Requested-With, Accept, Origin, Mcp-Session-Id, mcp-protocol-version"
+#                                                  "Content-Type, Authorization, X-Requested-With, Accept, Origin, Mcp-Session-Id, mcp-protocol-version" 
+    Header always set Access-Control-Expose-Headers "Mcp-Session-Id, Content-Type, mcp-protocol-version"
+    Header always set Access-Control-Max-Age "3600"
+
+    RewriteEngine On
+    RewriteCond %{REQUEST_METHOD} OPTIONS
+    RewriteRule .* - [END]
+
+    RewriteRule ^(.*)$ $1?crafterSite=mcptest [QSA,PT]
+
+    ProxyPass / http://localhost:9080/
+    ProxyPassReverse / http://localhost:9080/
+
+</VirtualHost>
+```
 
 
 
