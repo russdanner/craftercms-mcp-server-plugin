@@ -32,7 +32,7 @@ import io.swagger.v3.oas.models.examples.Example
 import io.swagger.v3.oas.models.media.Schema;
 import io.swagger.v3.oas.models.parameters.Parameter;
 import io.swagger.v3.parser.OpenAPIV3Parser
-import org.craftercms.ai.mcp.server.CrafterMcpServer
+import plugins.org.craftercms.rd.plugin.mcp.server.CrafterMcpServer
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory;
 

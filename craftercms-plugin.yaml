@@ -32,8 +32,8 @@ plugin:
     - MCP
     - AI
   version:
-    major: 0
-    minor: 1
+    major: 1
+    minor: 0
     patch: 0
   description: Plugin that installs an Model Context Protocol (MCP) server into your CrafterCMS Studio or Engine instance
   documentation: "https://github.com/russdanner/craftercms-mcp-server-plugin/blob/main/README.md"
@@ -44,7 +44,7 @@ plugin:
     screenshots:
       - title: Sitemap
         description: Sitemap
-        url: https://github.com/russdanner/craftercms-mcp-server-plugin/master/.crafter/logo.webp
+        url: https://raw.githubusercontent.com/russdanner/craftercms-mcp-server-plugin/refs/heads/main/.crafter/logo.webp
   developer:
     company:
       name: Russ Danner
@@ -55,6 +55,11 @@ plugin:
       name: Tony Field
       email: tony@kingsway.digital
       url: https://kingsway.digital
+  developer:
+    company:
+      name: Phil Nguyen
+      email: phil.nguyen@craftercms.com 
+      url: https://craftercms.com      
   license:
     name: MIT
     url: https://opensource.org/licenses/MIT
@@ -68,7 +73,7 @@ plugin:
     - major: 4
       minor: 3
     - major: 4
-      minor: 4
+      minor: 4     
     - major: 5
       minor: 0
   crafterCmsEditions:

@@ -80,7 +80,7 @@ class ToolSpringBeanScanner implements ApplicationContextAware {
 
     /**
      * Dynamically wires the following spring config
-     *   <bean name="toolIsIngredientAvail" class="org.craftercms.ai.McpToolReflect">
+     *   <bean name="toolIsIngredientAvail" class="plugins.org.craftercms.rd.plugin.mcp.server.tools.McpToolReflect">
      *      <property name="serviceObject" ref="recipeService" />
      *      <property name="methodName" value="isIngredientAvailable" />
      *      <property name="toolName" value="isIngredientAvailable" />
@@ -88,7 +88,7 @@ class ToolSpringBeanScanner implements ApplicationContextAware {
      *      <property name="returnType" value="string" />
      *      <property name="params">
      *         <list>
-     *           <bean name="param1" class="org.craftercms.ai.McpTool.ToolParam">
+     *           <bean name="param1" class="plugins.org.craftercms.rd.plugin.mcp.server.tools.McpTool.ToolParam">
      *             <property name="name" value="ingrdient" />
      *             <property name="type" value="string" />
      *             <property name="description" value="The name of the ingredient to check" />
