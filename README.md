@@ -1,13 +1,14 @@
 # Model Context Protocol (MCP) Server Implementation in CrafterCMS
 
 ## Overview
-Installs a baseline a MCP server into your CrafterCMS Engine instance.
+Installs a baseline MCP server into your CrafterCMS Engine instance.
 
 ## Presequsits
-This project relies on external dependencies. You will need to configure gapes based dependency downloads and the Groovy sandbox in order for this functionality to work. 
-In a test environment you can disable the sandoox rather than using whitelist/blacklist features to ease installation.
+This project relies on external dependencies. You will need to configure Grape-based dependency downloads and the Groovy sandbox for this functionality to work. 
 
-### Simple Presequsit Installation
+In a test environment, you can disable the sandbox instead of using the whitelist/blacklist features to simplify installation.
+
+### Installation
 In `CRAFTER_HOME/bin/apache-tomcat/shared/classes/org/crafter/engine/extension/server-config.properties` add the following lines:
 ```
 crafter.engine.groovy.sandbox.enable=false
@@ -16,7 +17,7 @@ crafter.engine.groovy.grapes.download.enabled=true
 
 ## Installation & Configuration
 
-1. Ensure that the presequsits are met (see above.)
+1. Ensure that the prerequisites are met (see above).
 2. Install this plugin into the project.
 3. Add configuration for authentication `site-config.xml` for the project:
 
@@ -271,13 +272,13 @@ public class AcmeAirlineServices {
 }     
 ```
 
-Note: Don't forget to add declare the bean in your applicaiton-context.xml
+Note: Don't forget to declare the bean in your applicaiton-context.xml
 
 ```
     <bean name="acmeAirlineServices" class="org.acme.AcmeAirlineServices" />
 ```
 
-Alternative appoach (declare bean via Spring annoations)
+Alternative approach (declare bean via Spring annotations)
 Currently blocked by: https://github.com/craftercms/craftercms/issues/8375
 ```
 package org.acme
@@ -323,5 +324,5 @@ More to come on this
 1. Start the inspector by executing `npx @modelcontextprotocol/inspector`
 2. Configure `Transport Type` with the auth URL `Streamable HTTP`
 3. Configure `URL` with the auth URL `http://localhost/api/plugins/org/craftercms/rd/plugin/mcp/server/craftermcp/stream`
-4. If you are requiring authentication, configure you OID/OAuth client ID
+4. If you are requiring authentication, configure your OID/OAuth client ID
 
