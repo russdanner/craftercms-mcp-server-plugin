@@ -1,7 +1,7 @@
 # Model Context Protocol (MCP) Server Implementation in CrafterCMS
 
 ## Overview
-Installs a baseline MCP server into your CrafterCMS Engine instance.
+Installs a baseline MCP server into your CrafterCMS Engine instance. 
 
 ## Presequsits
 This project relies on external dependencies. You will need to configure Grape-based dependency downloads and the Groovy sandbox for this functionality to work. 
