@@ -7,8 +7,6 @@ Installs a baseline MCP server into your CrafterCMS Engine instance.
 This project relies on external dependencies. You will need to configure Grape-based dependency downloads and the Groovy sandbox for this functionality to work. 
 
 In a test environment, you can disable the sandbox instead of using the whitelist/blacklist features to simplify installation.
-
-### Installation
 In `CRAFTER_HOME/bin/apache-tomcat/shared/classes/org/crafter/engine/extension/server-config.properties` add the following lines:
 ```
 crafter.engine.groovy.sandbox.enable=false
