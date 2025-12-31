@@ -42,6 +42,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedHashMap
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -792,7 +793,7 @@ class CrafterMcpServer {
         //     // return createErrorResponse(id, -32000, "Tool authentication failed: " + toolName);
         // }
 
-        Map<String,String> callArgs = new HashMap<>()
+        Map<String,String> callArgs = new LinkedHashMap<>()
         String siteId = SiteContext.getCurrent().getSiteName()
         if (toolToCall.hasProperty("siteId")) {
             toolToCall.siteId = siteId
