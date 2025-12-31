@@ -7,7 +7,7 @@ This plugin is a Spring AI-based MCP (Model Context Protocol) server. This serve
 * Built on [Spring AI’s orchestration framework](https://craftercms.com/blog/technical/what-is-springai)
 * Supports JSON RPC 2.0 over HTTPS
 * Secured and public modes
-* Integrates with OID SSO
+* Integrates with OID/OAuth  SSO
 
 ## Quick Links
 - Installation Video & Demo: https://youtu.be/GQdxTIaCXwg
