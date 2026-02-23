@@ -54,7 +54,7 @@ class McpToolRest extends McpTool {
 
     @Override
     Object call(Map<String, String> args) {
-        logger.info("McpToolRest called for: {} {}", method, url)
+        logger.debug("McpToolRest called for: {} {}", method, url)
 
         RestClient restClient = RestClient.builder()
                 .baseUrl(baseUrl)
@@ -88,15 +88,15 @@ class McpToolRest extends McpTool {
                 case ParamType.query:
                     if (urlPathQuery.contains('?')) urlPathQuery += '&'
                     else urlPathQuery += '?'
-//                     urlPathQuery += URLEncoder.encode(name, "UTF-8")
+//                  urlPathQuery += URLEncoder.encode(name, "UTF-8")
                     urlPathQuery += name
                     urlPathQuery += '='
-//                      urlPathQuery += URLEncoder.encode(args.get(name), "UTF-8")
+//                  urlPathQuery += URLEncoder.encode(args.get(name), "UTF-8")
                     urlPathQuery += args.get(name)
                     break
             }
         }
-        logger.info("McpToolRest about to call API {} with args {}",urlPathQuery, args)
+        logger.debug("McpToolRest about to call API {} with args {}",urlPathQuery, args)
 
         return spec.uri(urlPathQuery).retrieve().body(String.class)
     }

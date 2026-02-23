@@ -31,7 +31,10 @@ import plugins.org.craftercms.rd.plugin.mcp.server.tools.*
 
 
 class JWTAuthValidator implements AuthValidator {
-
+    def discoveryUrl = "https://auth.example.com/.well-known/oauth-authorization-server"
+    def jwksUri = "https://auth.example.com/.well-known/jwks.json"
+    def authDomain = "https://api.example.com/mcp"
+    
     public String[] validate(String authHeader, HttpServletResponse resp) throws IOException {
 
      if (authHeader == null || !authHeader.startsWith("Bearer ")) {
@@ -40,13 +43,12 @@ class JWTAuthValidator implements AuthValidator {
             resp.setHeader("WWW-Authenticate", "Bearer realm=\"site\", error=\"missing_token\", " +
                 "error_description=\"Authorization header missing or invalid\", " +
                 "authorization_uri=\"  \", " +
-                "discovery_uri=\"https://auth.example.com/.well-known/oauth-authorization-server\"");
+                "discovery_uri=\"$discoveryUrl\"");
             return null;
         }
 
         String token = authHeader.substring(7);
         try {
-            String jwksUri = "https://auth.example.com/.well-known/jwks.json";
             // Fetch JWKS using HttpClient
             HttpClient client = HttpClient.newBuilder().build();
             HttpRequest request = HttpRequest.newBuilder()
@@ -90,7 +92,7 @@ class JWTAuthValidator implements AuthValidator {
                 .build()
                 .parseClaimsJws(token);
 
-            if (!claims.getBody().getAudience().contains("https://api.example.com/mcp")) {
+            if (!claims.getBody().getAudience().contains(authDomain)) {
                 logger.warn("Invalid token audience");
                 resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
                 resp.setHeader("WWW-Authenticate", "Bearer realm=\"example\", error=\"invalid_token\", " +

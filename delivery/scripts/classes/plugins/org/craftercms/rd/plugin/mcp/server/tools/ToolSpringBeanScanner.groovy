@@ -74,7 +74,6 @@ class ToolSpringBeanScanner implements ApplicationContextAware {
                     registerTool(beanName, bean, method, declareToolAnnotation)
                 }
             }
-
         }        
     }
 
@@ -117,7 +116,7 @@ class ToolSpringBeanScanner implements ApplicationContextAware {
         DeclareToolParam[] toolParamAnnotations = method.getAnnotationsByType(DeclareToolParam.class);
 
         toolParamAnnotations.each { paramAnnotation ->
-            logger.info("processing param '${paramAnnotation.name()}' ")
+            logger.info("   processing param '${paramAnnotation.name()}' ")
 
             def param = new McpTool.ToolParam()
             param.name = paramAnnotation.name()

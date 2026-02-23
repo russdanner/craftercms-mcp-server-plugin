@@ -42,5 +42,4 @@ class McpResource {
     String uri
     String getUri() { return uri }
     void setUri(String value) { uri = value }
-
 }

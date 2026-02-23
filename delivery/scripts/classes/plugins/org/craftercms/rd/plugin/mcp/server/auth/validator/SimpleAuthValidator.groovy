@@ -36,7 +36,7 @@ import org.slf4j.LoggerFactory;
 
 class SimpleAuthValidator implements AuthValidator {
 
-    private static final Logger logger = LoggerFactory.getLogger(AuthValidator);
+    private static final Logger logger = LoggerFactory.getLogger(AuthValidator)
 
     public String[] scopes; 
     public String[] getScopes() { return scopes; }
@@ -50,24 +50,29 @@ class SimpleAuthValidator implements AuthValidator {
 
     public String[] validate(String authHeader, HttpServletResponse resp) throws IOException {
 
-
-//        System.out.println("AUTH VALIDATOR (hard coded to profile:email): "+authHeader)
-
-        if (authHeader == null || "".equals(authHeader)) {
-            logger.warn("No valid Authorization header received");
-            resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+      if (authHeader == null || "".equals(authHeader)) {
+            logger.warn("No valid Authorization header received")
+            resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED)
             return null;
         }
         else {
-//            if(!sessions.contains(authHeader)) {
-            //     sessions.put(authHeader)
-            //     logger.warn("Invalid authorization header value");
-            //     resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            //     return null;
-            // }
-            // else {
-               return ["custom:Wallet", "profile","email"]
-//            } 
+            if(!sessions.contains(authHeader)) {
+                sessions.put(authHeader)
+                logger.warn("Invalid authorization header value")
+                resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED)
+                return null
+            }
+            else {
+               return getClaims(authHeader)
+            } 
         }
+    }
+
+    /**
+     * override this to handle claim return
+     * example: ["custom:Wallet", "profile","email"]
+     */
+    protected getClaims(authHeader) {
+        return []
     }
 }
